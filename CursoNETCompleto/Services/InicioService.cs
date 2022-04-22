@@ -18,39 +18,39 @@ namespace CursoNETCompleto.Services
             {
                 using (OracleConnection oracleConnection = new OracleConnection(ConfigurationManager.ConnectionStrings["Banner"].ConnectionString))
                 {
-                    con.Open();
+                    oracleConnection.Open();
 
-                    using (OracleCommand comando = new OracleCommand())
+                    using (OracleCommand oracleCommand = new OracleCommand())
                     {
-                        comando.Connection = con;
-                        comando.CommandText = @"SZ_BFQ_REGISTRATION.f_obtener_holds_nativo";
-                        comando.CommandType = System.Data.CommandType.StoredProcedure;
-                        comando.BindByName = true;
+                        oracleCommand.Connection = oracleConnection;
+                        oracleCommand.CommandText = @"SZ_BFQ_REGISTRATION.f_obtener_holds_nativo";
+                        oracleCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                        oracleCommand.BindByName = true;
 
-                        comando.Parameters.Add(new OracleParameter("P_PIDM", OracleDbType.Int32)
+                        oracleCommand.Parameters.Add(new OracleParameter("P_PIDM", OracleDbType.Int32)
                         {
                             Value = Int32.Parse(Pidm),
                             Direction = ParameterDirection.Input,
                             Size = 10
                         });
 
-                        comando.Parameters.Add(new OracleParameter("P_NOVISIBLES", OracleDbType.Varchar2)
+                        oracleCommand.Parameters.Add(new OracleParameter("P_NOVISIBLES", OracleDbType.Varchar2)
                         {
                             Size = 200,
                             Direction = ParameterDirection.Output
                         });
 
-                        comando.Parameters.Add(new OracleParameter("salida", OracleDbType.RefCursor)
+                        oracleCommand.Parameters.Add(new OracleParameter("salida", OracleDbType.RefCursor)
                         {
                             Direction = ParameterDirection.ReturnValue
                         });
 
-                        comando.ExecuteNonQuery();
+                        oracleCommand.ExecuteNonQuery();
 
                         try
                         {
                             // Revisamos si se pudo ejecutar la consulta
-                            OracleDataReader lector = ((OracleRefCursor)comando.Parameters["salida"].Value).GetDataReader();
+                            OracleDataReader lector = ((OracleRefCursor)oracleCommand.Parameters["salida"].Value).GetDataReader();
 
                             // Revisamos cada contacto
                             while (lector.Read())
@@ -86,7 +86,7 @@ namespace CursoNETCompleto.Services
                         }
                         finally
                         {
-                            con.Close();
+                            oracleConnection.Close();
                         }
                     }
                 }
