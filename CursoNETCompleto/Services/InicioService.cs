@@ -23,22 +23,9 @@ namespace CursoNETCompleto.Services
                     using (OracleCommand oracleCommand = new OracleCommand())
                     {
                         oracleCommand.Connection = oracleConnection;
-                        oracleCommand.CommandText = @"SZ_BFQ_REGISTRATION.f_obtener_holds_nativo";
+                        oracleCommand.CommandText = @"PK_JRR.P_FIND_ALL";
                         oracleCommand.CommandType = System.Data.CommandType.StoredProcedure;
                         oracleCommand.BindByName = true;
-
-                        oracleCommand.Parameters.Add(new OracleParameter("P_PIDM", OracleDbType.Int32)
-                        {
-                            Value = Int32.Parse(Pidm),
-                            Direction = ParameterDirection.Input,
-                            Size = 10
-                        });
-
-                        oracleCommand.Parameters.Add(new OracleParameter("P_NOVISIBLES", OracleDbType.Varchar2)
-                        {
-                            Size = 200,
-                            Direction = ParameterDirection.Output
-                        });
 
                         oracleCommand.Parameters.Add(new OracleParameter("salida", OracleDbType.RefCursor)
                         {
