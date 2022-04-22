@@ -73,7 +73,7 @@ namespace CursoNETCompleto.Services
             }
             catch (Exception ex)
             {
-                
+                Console.WriteLine(ex.Message);
             }
         }
     }
