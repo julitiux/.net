@@ -1,12 +1,10 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using CursoNETCompleto.Models;
+using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Linq;
-using System.Web;
-using CursoNETCompleto.Models;
 
 namespace CursoNETCompleto.Services
 {
@@ -46,14 +44,17 @@ namespace CursoNETCompleto.Services
                                 try
                                 {
                                     List<Person> personList = new List<Person>();
-                                    Person person = new Person
-                                    {
-                                        Id = (long)oracleDataReader["ID"],
-                                        Name = oracleDataReader["NAME"].ToString(),
-                                        Mail = oracleDataReader["MAIL"].ToString(),
-                                        DateCreate = (DateTime)oracleDataReader["DATE_CREATED"]
-                                    };
-                                 
+
+                                    personList.Add(
+                                        new Person
+                                        {
+                                            Id = (long)oracleDataReader["ID"],
+                                            Name = oracleDataReader["NAME"].ToString(),
+                                            Mail = oracleDataReader["MAIL"].ToString(),
+                                            DateCreate = (DateTime)oracleDataReader["DATE_CREATED"]
+                                        }
+                                    );
+
                                 }
                                 catch (Exception ex)
                                 {
