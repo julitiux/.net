@@ -53,24 +53,7 @@ namespace CursoNETCompleto.Services
                                         Mail = oracleDataReader["MAIL"].ToString(),
                                         DateCreate = (DateTime)oracleDataReader["DATE_CREATED"]
                                     };
-                                    /*Bloqueos bloqueo = new Bloqueos
-                                    {
-                                        Pidm = Pidm,
-                                        CODIGO = oracleDataReader["CODIGO"]?.ToString(),
-                                        MOTIVO = oracleDataReader["MOTIVO"]?.ToString(),
-                                        MONTO = oracleDataReader["MONTO"]?.ToString(),
-                                        SPRHOLD_USER = oracleDataReader["SPRHOLD_USER"]?.ToString(),
-                                        BLOQUEA_INSCRIPCION = oracleDataReader["BLOQUEA_INSCRIPCION"]?.ToString() == "N" ? false : true,
-                                        BLOQUEA_PAGO = oracleDataReader["BLOQUEA_PAGO"]?.ToString() == "N" ? false : true,
-                                        BLOQUEA_TRANSCRIPT = oracleDataReader["BLOQUEA_TRANSCRIPT"]?.ToString() == "N" ? false : true,
-                                        BLOQUEA_GRADUACION = oracleDataReader["BLOQUEA_GRADUACION"]?.ToString() == "N" ? false : true,
-                                        BLOQUEA_CALIF = oracleDataReader["BLOQUEA_CALIF"]?.ToString() == "N" ? false : true,
-                                        BLOQUEA_ENROLL = oracleDataReader["BLOQUEA_ENROLL"]?.ToString() == "N" ? false : true,
-                                        BLOQUEA_APPL = oracleDataReader["BLOQUEA_APPL"]?.ToString() == "N" ? false : true,
-                                        BLOQUEA_EVALUA = oracleDataReader["BLOQUEA_EVALUA"]?.ToString() == "N" ? false : true,
-                                        SPRHOLD_DATA_ORIGIN = oracleDataReader["SPRHOLD_DATA_ORIGIN"]?.ToString()
-                                    };
-                                    bloqueos.Add(bloqueo);*/
+                                 
                                 }
                                 catch (Exception ex)
                                 {
