@@ -16,7 +16,7 @@ namespace CursoNETCompleto.Services
 
             try
             {
-                using (OracleConnection con = new OracleConnection(ConfigurationManager.ConnectionStrings["Banner"].ConnectionString))
+                using (OracleConnection oracleConnection = new OracleConnection(ConfigurationManager.ConnectionStrings["Banner"].ConnectionString))
                 {
                     con.Open();
 
