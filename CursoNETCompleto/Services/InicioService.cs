@@ -10,13 +10,16 @@ namespace CursoNETCompleto.Services
 {
     public class InicioService
     {
-        public void Test(string Pidm, int noMatricula)
+        public List<Person> Test()
         {
+
+            List<Person> personList = new List<Person>();
 
             try
             {
                 using (OracleConnection oracleConnection = new OracleConnection(ConfigurationManager.ConnectionStrings["Banner"].ConnectionString))
                 {
+
                     oracleConnection.Open();
 
                     using (OracleCommand oracleCommand = new OracleCommand())
@@ -43,7 +46,6 @@ namespace CursoNETCompleto.Services
                             {
                                 try
                                 {
-                                    List<Person> personList = new List<Person>();
 
                                     personList.Add(
                                         new Person
@@ -61,7 +63,6 @@ namespace CursoNETCompleto.Services
                                     Console.WriteLine(ex.Message);
                                 }
                             }
-                            //resp.Bloqueos = bloqueos;
 
                         }
                         finally
@@ -75,6 +76,7 @@ namespace CursoNETCompleto.Services
             {
                 Console.WriteLine(ex.Message);
             }
+            return personList;
         }
     }
 }
