@@ -12,13 +12,14 @@ namespace CursoNETCompleto.Controllers
     {
         public ActionResult Index()
         {
-            //InicioService inicio = new InicioService();
+            InicioService inicio = new InicioService();
             //inicio.Test("87126", 8273647);
 
             List<Cadena> cadenas = new List<Cadena>() { new Cadena() { nombre = "Julio"}, new Cadena() { nombre = "Ale"} };
 
             ViewBag.Message = "Your application description page.";
             ViewBag.Cadenas = cadenas;
+            ViewBag.Documentos = inicio.Test();
 
             return View();
         }
