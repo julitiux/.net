@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Web;
+using CursoNETCompleto.Models;
 
 namespace CursoNETCompleto.Services
 {
@@ -44,6 +45,14 @@ namespace CursoNETCompleto.Services
                             {
                                 try
                                 {
+                                    List<Person> personList = new List<Person>();
+                                    Person person = new Person
+                                    {
+                                        Id = (long)oracleDataReader["ID"],
+                                        Name = oracleDataReader["NAME"].ToString(),
+                                        Mail = oracleDataReader["MAIL"].ToString(),
+                                        DateCreate = (DateTime)oracleDataReader["DATE_CREATED"]
+                                    };
                                     /*Bloqueos bloqueo = new Bloqueos
                                     {
                                         Pidm = Pidm,
